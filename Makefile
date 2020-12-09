@@ -182,12 +182,17 @@ else ifeq ($(COIN),ravencoin)
 DEFINES   += BIP44_COIN_TYPE=175  BIP44_COIN_TYPE_2=175 COIN_P2PKH_VERSION=60 COIN_P2SH_VERSION=122 COIN_FAMILY=1 COIN_COINID=\"Ravencoin\" COIN_COINID_HEADER=\"RAVENCOIN\" COIN_COLOR_HDR=0x2E4A80 COIN_COLOR_DB=0x74829E COIN_COINID_NAME=\"Ravencoin\" COIN_COINID_SHORT=\"RVN\" COIN_KIND=COIN_KIND_RAVENCOIN
 APPNAME ="Ravencoin"
 APP_LOAD_PARAMS += --path $(APP_PATH)
+else ifeq ($(COIN),bitcoinz)
+# BitcoinZ
+DEFINES   += COIN_P2PKH_VERSION=7352 COIN_P2SH_VERSION=7357 COIN_FAMILY=1 COIN_COINID=\"BitcoinZ\" COIN_COINID_HEADER=\"BITCOINZ\" COIN_COLOR_HDR=0x85bb65 COIN_COLOR_DB=0xc2ddb2 COIN_COINID_NAME=\"BitcoinZ\" COIN_COINID_SHORT=\"BTCZ\" COIN_KIND=COIN_KIND_BITCOINZ COIN_FORKID=0
+APPNAME ="BitcoinZ"
 else
 ifeq ($(filter clean,$(MAKECMDGOALS)),)
-$(error Unsupported COIN - use bitcoin_testnet, bitcoin, bitcoin_cash, bitcoin_gold, litecoin, dogecoin, dash, zcash, horizen, komodo, stratis, peercoin, pivx, viacoin, vertcoin, stealth, digibyte, qtum, bitcoin_private, zcoin, gamecredits, zclassic, xsn, nix, lbry, resistance, ravencoin)
+$(error Unsupported COIN - use bitcoin_testnet, bitcoin, bitcoin_cash, bitcoin_gold, litecoin, dogecoin, dash, zcash, horizen, komodo, stratis, peercoin, pivx, viacoin, vertcoin, stealth, digibyte, qtum, bitcoin_private, zcoin, gamecredits, zclassic, xsn, nix, lbry, resistance, ravencoin, bitcoinz)
 endif
 endif
 
+TARGET_NAME = TARGET_NANOS
 APP_LOAD_PARAMS += $(APP_LOAD_FLAGS)
 DEFINES += $(DEFINES_LIB)
 
@@ -314,6 +319,6 @@ listvariants:
 else
 
 listvariants:
-	@echo VARIANTS COIN bitcoin_testnet bitcoin bitcoin_cash bitcoin_gold litecoin dogecoin dash zcash horizen komodo stratis peercoin pivx viacoin vertcoin stealth digibyte qtum bitcoin_private zcoin gamecredits zclassic xsn nix lbry ravencoin resistance
+	@echo VARIANTS COIN bitcoin_testnet bitcoin bitcoin_cash bitcoin_gold litecoin dogecoin dash zcash horizen komodo stratis peercoin pivx viacoin vertcoin stealth digibyte qtum bitcoin_private zcoin gamecredits zclassic xsn nix lbry ravencoin resistance bitcoinz
 
 endif
